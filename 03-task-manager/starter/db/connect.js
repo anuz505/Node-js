@@ -5,7 +5,7 @@ const connectToDB =( url) => {
         useNewUrlParser: true, 
         useCreateIndex: true, 
         useFindAndModify: true, 
-        useUnifiedTopology: true 
+        useUnifiedTopology: true,
     });
 };
 

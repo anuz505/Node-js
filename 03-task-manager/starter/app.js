@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const tasks = require('./routes/task');
 const connectDB = require('./db/connect');
-require('dotenv').config();
+
+
+const connectionString = "mongodb+srv://anujb364:%40Nudan22@nodeexpressproject.sjwlxiw.mongodb.net/03-TASK-MANAGER?retryWrites=true&w=majority&appName=Nodeexpressproject"
 
 // Middleware
 app.use(express.json());
@@ -18,7 +20,7 @@ const port = 3000;
 
 const start = async () => {
     try {
-        await connectDB(process.env.MONGO_URI);
+        await connectDB(connectionString)
         app.listen(port, console.log(`Server is listening on ${port}`));
     } catch (error) {
         console.error(error);
