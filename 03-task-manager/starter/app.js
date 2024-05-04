@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const tasks = require('./routes/task');
 const connectDB = require('./db/connect');
-
+const notFound = require('./middlware/not-foundapp')
+const errorHandlerMiddleware = require('./middlware/errorhandler')
 
 const connectionString = "mongodb+srv://anujb364:%40Nudan22@nodeexpressproject.sjwlxiw.mongodb.net/03-TASK-MANAGER?retryWrites=true&w=majority&appName=Nodeexpressproject"
 
@@ -10,11 +11,11 @@ const connectionString = "mongodb+srv://anujb364:%40Nudan22@nodeexpressproject.s
 app.use(express.json());
 
 // Routes
-app.get('/hello', (req, res) => {
-    res.send('Task manager app');
-});
+
 
 app.use('/api/v1/tasks', tasks);
+app.use(notFound)
+app.use(errorHandlerMiddleware)
 
 const port = 3000;
 
